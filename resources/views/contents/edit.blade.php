@@ -30,26 +30,23 @@
     }
 
     .back-button {
-    background-color: #ffffff;
-    color: #0cc0df;
-    padding: 0.5rem 1.2rem;
-    font-weight: bold;
-    border-radius: 1rem;
-    text-decoration: none;
-    transition: background 0.2s;
-    display: inline-block;
-
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    z-index: 10;
+        background-color: #ffffff;
+        color: #0cc0df;
+        padding: 0.5rem 1.2rem;
+        font-weight: bold;
+        border-radius: 1rem;
+        text-decoration: none;
+        transition: background 0.2s;
+        display: inline-block;
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        z-index: 10;
     }
-
 
     .back-button:hover {
         background-color: #e0f9fc;
     }
-
 
     label {
         display: block;
@@ -151,7 +148,11 @@
                     <source src="{{ asset('storage/' . $content->media_path) }}">
                 </audio>
             @elseif($content->media_type === 'video')
-                <video controls>
+                <video controls
+                    @if($content->poster_path)
+                        poster="{{ asset('storage/' . $content->poster_path) }}"
+                    @endif
+                >
                     <source src="{{ asset('storage/' . $content->media_path) }}">
                 </video>
             @endif
@@ -159,6 +160,11 @@
 
         <label for="media_path">Upload New File (optional)</label>
         <input type="file" name="media_path" id="media_path">
+
+        @if($content->media_type === 'video')
+            <label for="poster">Upload New Poster (optional)</label>
+            <input type="file" name="poster" id="poster" accept="image/*">
+        @endif
 
         <button type="submit">Update Content</button>
     </form>
