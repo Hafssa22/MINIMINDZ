@@ -15,10 +15,4 @@
         </div>
     </div>
 </x-app-layout>
-@extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <!-- Your styled dashboard goes here -->
-    </div>
-@endsection
