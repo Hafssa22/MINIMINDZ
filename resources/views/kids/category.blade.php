@@ -104,7 +104,7 @@
 
     <div class="content-grid" style="display: none;" id="contentGrid">
 
-    @if (strtolower($category) === 'songs')
+    @if (strtolower($category) === 'songs' || strtolower($category) === 'games' )
         @foreach($contents as $group)
             <div class="song-video">
                 @php
