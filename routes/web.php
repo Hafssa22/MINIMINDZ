@@ -29,6 +29,8 @@ Route::prefix('kids')->group(function () {
     Route::get('/{category}', [KidsController::class, 'showCategory'])->name('kids.category');
 });
 
+
+
 Route::middleware(['auth'])->prefix('tutor')->group(function () {
     Route::get('/dashboard', function () {
         return view('tutor.dashboard');
