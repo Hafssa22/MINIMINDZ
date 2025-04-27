@@ -20,6 +20,14 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+Route::get('/kids', function () {
+    return view('kids.index');
+});
+
+Route::prefix('kids')->group(function () {
+    Route::get('/', [KidsController::class, 'index'])->name('kids.home');
+    Route::get('/{category}', [KidsController::class, 'showCategory'])->name('kids.category');
+});  
   
 Route::middleware(['auth'])->prefix('tutor')->group(function () {
     Route::get('/dashboard', function () {
