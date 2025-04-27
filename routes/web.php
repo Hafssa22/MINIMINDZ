@@ -27,7 +27,7 @@ Route::get('/kids', function () {
 Route::prefix('kids')->group(function () {
     Route::get('/', [KidsController::class, 'index'])->name('kids.home');
     Route::get('/{category}', [KidsController::class, 'showCategory'])->name('kids.category');
-});
+}); 
 
 
 
